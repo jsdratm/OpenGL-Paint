@@ -5,11 +5,11 @@
 #include <stdlib.h>
 #include <vector>
 
-class point{
+class point {
 public:
-	point();
-	point(GLdouble x, GLdouble y, GLdouble z, GLdouble red, GLdouble green, GLdouble blue);
-	~point();
+    point();
+    point(GLdouble x, GLdouble y, GLdouble z, GLdouble red, GLdouble green, GLdouble blue);
+    ~point();
     GLdouble getX();
     GLdouble getY();
     GLdouble getZ();
@@ -23,15 +23,14 @@ public:
     void setGreen(GLdouble input);
     void setBlue(GLdouble input);
     void Draw();
-    
-private:
-	GLdouble x;
-	GLdouble y;
-	GLdouble z;
-	GLdouble red;
-	GLdouble green;
-	GLdouble blue;
-};
 
+private:
+    GLdouble x;
+    GLdouble y;
+    GLdouble z;
+    GLdouble red;
+    GLdouble green;
+    GLdouble blue;
+};
 
 #endif

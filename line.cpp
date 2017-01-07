@@ -1,62 +1,77 @@
 #include "line.h"
 
-line::line(){
-       
+line::line()
+{
 }
 
-line::line(point startPoint, point endPoint, GLdouble red, GLdouble green, GLdouble blue):startPoint(startPoint),endPoint(endPoint),red(red),green(green),blue(blue){
-                                     
+line::line(point startPoint, point endPoint, GLdouble red, GLdouble green, GLdouble blue)
+    : startPoint(startPoint)
+    , endPoint(endPoint)
+    , red(red)
+    , green(green)
+    , blue(blue)
+{
 }
 
-line::~line(){
-        
+line::~line()
+{
 }
 
-point line::getStartPoint(){
-      return startPoint;
+point line::getStartPoint()
+{
+    return startPoint;
 }
 
-point line::getEndPoint(){
-      return endPoint;      
+point line::getEndPoint()
+{
+    return endPoint;
 }
 
-void line::setStartPoint(point input){
-     startPoint = input;     
+void line::setStartPoint(point input)
+{
+    startPoint = input;
 }
 
-void line::setEndPoint(point input){
-     endPoint = input;     
-}
-    
-GLdouble line::getRed(){
-         return red;
+void line::setEndPoint(point input)
+{
+    endPoint = input;
 }
 
-GLdouble line::getGreen(){
-         return green;
+GLdouble line::getRed()
+{
+    return red;
 }
 
-GLdouble line::getBlue(){
-         return blue;
+GLdouble line::getGreen()
+{
+    return green;
 }
 
-void line::setRed(GLdouble input){
-     red = input;
+GLdouble line::getBlue()
+{
+    return blue;
 }
 
-void line::setGreen(GLdouble input){
-     green = input;
+void line::setRed(GLdouble input)
+{
+    red = input;
 }
 
-void line::setBlue(GLdouble input){
-     blue = input;
+void line::setGreen(GLdouble input)
+{
+    green = input;
 }
 
-void line::Draw(){
+void line::setBlue(GLdouble input)
+{
+    blue = input;
+}
+
+void line::Draw()
+{
     glBegin(GL_LINES);
-    glColor3f( red, green, blue );
+    glColor3f(red, green, blue);
     glVertex3f(startPoint.getX(), startPoint.getY(), startPoint.getZ());
     glVertex3f(endPoint.getX(), endPoint.getY(), endPoint.getZ());
-	glEnd(); 
+    glEnd();
 }
-    

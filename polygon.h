@@ -6,11 +6,11 @@
 #include <vector>
 #include "point.h"
 
-class polygon{
+class polygon {
 public:
-	polygon();
-	polygon(std::vector<point> points, GLdouble red, GLdouble green, GLdouble blue);
-	~polygon();
+    polygon();
+    polygon(std::vector<point> points, GLdouble red, GLdouble green, GLdouble blue);
+    ~polygon();
     std::vector<point> getPoints();
     GLdouble getRed();
     GLdouble getGreen();
@@ -20,13 +20,12 @@ public:
     void setGreen(GLdouble input);
     void setBlue(GLdouble input);
     void Draw();
-    
-private:
-	std::vector<point> points;
-	GLdouble red;
-	GLdouble green;
-	GLdouble blue;
-};
 
+private:
+    std::vector<point> points;
+    GLdouble red;
+    GLdouble green;
+    GLdouble blue;
+};
 
 #endif

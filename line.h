@@ -6,11 +6,11 @@
 #include <vector>
 #include "point.h"
 
-class line{
+class line {
 public:
-	line();
-	line(point startPoint, point endPoint, GLdouble red, GLdouble green, GLdouble blue);
-	~line();
+    line();
+    line(point startPoint, point endPoint, GLdouble red, GLdouble green, GLdouble blue);
+    ~line();
     point getStartPoint();
     point getEndPoint();
     GLdouble getRed();
@@ -22,14 +22,13 @@ public:
     void setGreen(GLdouble input);
     void setBlue(GLdouble input);
     void Draw();
-    
-private:
-	point startPoint;
-	point endPoint;
-	GLdouble red;
-	GLdouble green;
-	GLdouble blue;
-};
 
+private:
+    point startPoint;
+    point endPoint;
+    GLdouble red;
+    GLdouble green;
+    GLdouble blue;
+};
 
 #endif
