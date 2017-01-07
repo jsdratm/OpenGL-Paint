@@ -100,7 +100,7 @@ void myGlutDisplay(void)
         polygons[i].Draw();
     }
 
-	// If we are in the process of drawing a line, draw it with rubber-banding effect
+    // If we are in the process of drawing a line, draw it with rubber-banding effect
     if (drawMode == "line" && tempPoints.size() != 0) {
         std::vector<GLdouble> DataPoint = convert2DTo3D(lastMouseX, lastMouseY);
         glBegin(GL_LINES);
@@ -110,7 +110,7 @@ void myGlutDisplay(void)
         glEnd();
     }
 
-	// If we are in the process of drawing a polygon, draw it with rubber-banding effect
+    // If we are in the process of drawing a polygon, draw it with rubber-banding effect
     if (drawMode == "polygon" && tempPoints.size() != 0) {
         std::vector<GLdouble> DataPoint = convert2DTo3D(lastMouseX, lastMouseY);
         if (tempPoints.size() > 1) {
@@ -136,7 +136,7 @@ void myGlutDisplay(void)
         }
     }
 
-	// If we are in the process of drawing a rectangle, draw it with rubber-banding effect
+    // If we are in the process of drawing a rectangle, draw it with rubber-banding effect
     if (drawMode == "rectangle" && tempPoints.size() != 0) {
         std::vector<GLdouble> DataPoint = convert2DTo3D(lastMouseX, lastMouseY);
         if ((DataPoint[0] > tempPoints[0].getX() && DataPoint[1] < tempPoints[0].getY()) || (DataPoint[0] < tempPoints[0].getX() && DataPoint[1] > tempPoints[0].getY())) {
@@ -282,18 +282,18 @@ void processMouse(int button, int state, int x, int y)
         // left mouse button
         if (button == GLUT_LEFT_BUTTON) {
             if (drawMode == "point") {
-				// We are drawing a single point
+		// We are drawing a single point
                 std::vector<GLdouble> DataPoint = convert2DTo3D(x, y);
                 points.push_back(point(DataPoint[0], DataPoint[1], DataPoint[2], globalRed, globalGreen, globalBlue));
             }
             else if (drawMode == "line") {
                 if (tempPoints.size() == 0) {
-					// We are drawing the first point of a new line
+                    // We are drawing the first point of a new line
                     std::vector<GLdouble> DataPoint = convert2DTo3D(x, y);
                     tempPoints.push_back(point(DataPoint[0], DataPoint[1], DataPoint[2], globalRed, globalGreen, globalBlue));
                 }
                 else {
-					// We are drawing the second point in a line
+		    // We are drawing the second point in a line
                     std::vector<GLdouble> DataPoint = convert2DTo3D(x, y);
                     tempPoints.push_back(point(DataPoint[0], DataPoint[1], DataPoint[2], globalRed, globalGreen, globalBlue));
                     lines.push_back(line(tempPoints[0], tempPoints[1], globalRed, globalGreen, globalBlue));
@@ -302,12 +302,12 @@ void processMouse(int button, int state, int x, int y)
             }
             else if (drawMode == "rectangle") {
                 if (tempPoints.size() == 0) {
-					// We are drawing a new rectangle
+		    // We are drawing a new rectangle
                     std::vector<GLdouble> DataPoint = convert2DTo3D(x, y);
                     tempPoints.push_back(point(DataPoint[0], DataPoint[1], DataPoint[2], globalRed, globalGreen, globalBlue));
                 }
                 else {
-					// We are finishing a rectangle
+                    // We are finishing a rectangle
                     std::vector<GLdouble> DataPoint = convert2DTo3D(x, y);
                     tempPoints.push_back(point(DataPoint[0], DataPoint[1], DataPoint[2], globalRed, globalGreen, globalBlue));
                     rectangles.push_back(rectangle(tempPoints[0], tempPoints[1], globalRed, globalGreen, globalBlue));
@@ -315,28 +315,28 @@ void processMouse(int button, int state, int x, int y)
                 }
             }
             else if (drawMode == "polygon") {
-				// We are drawing a polygon
+                // We are drawing a polygon
                 std::vector<GLdouble> DataPoint = convert2DTo3D(x, y);
                 tempPoints.push_back(point(DataPoint[0], DataPoint[1], DataPoint[2], globalRed, globalGreen, globalBlue));
                 double ratioX = DataPoint[0] / tempPoints[0].getX();
                 double ratioY = DataPoint[1] / tempPoints[0].getY();
 				
-				// Detect when the user is closing the polygon (the final point has to be within a certain distance of the first point)
+                // Detect when the user is closing the polygon (the final point has to be within a certain distance of the first point)
                 if (ratioX <= 1.2 && ratioY <= 1.2 && ratioX >= 0.8 && ratioY >= 0.8 && tempPoints.size() > 2) {
-					// Finish the polygon
+                    // Finish the polygon
                     polygons.push_back(polygon(tempPoints, globalRed, globalGreen, globalBlue));
                     tempPoints.clear();
                 }
                 else {
-					// Just add the point to the list of temporary points
+                    // Just add the point to the list of temporary points
                     tempPoints.push_back(point(DataPoint[0], DataPoint[1], DataPoint[2], globalRed, globalGreen, globalBlue));
                 }
             }
         }
         // for the middle mouse button
         else if (button == GLUT_MIDDLE_BUTTON) 
-		{
-			// Ignore
+	{
+            // Ignore
         }
         // for the right mouse button
         else {
